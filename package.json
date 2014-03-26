@@ -1,0 +1,26 @@
+{
+  "name": "smarthome",
+  "version": "0.0.0",
+  "description": "RWE Smarthome API",
+  "main": "lib/main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "repository": "",
+  "author": "Felix Rotthowe",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "request" : "",
+    "cheerio" : "",
+    "moment" : "",
+    "underscore": "",
+  },
+  "devDependencies": {
+    "mocha": "",
+    "should": ""
+  }
+}
