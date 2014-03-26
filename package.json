@@ -17,7 +17,7 @@
     "request" : "",
     "cheerio" : "",
     "moment" : "",
-    "underscore": "",
+    "underscore": ""
   },
   "devDependencies": {
     "mocha": "",
