@@ -1,4 +1,5 @@
-= RWE Smarthome API =
+RWE Smarthome API
+=================
 
 Scrapes the RWE Smarthome Mobile Web Interface and implements the
 long polling mechanism that this site uses to be notified of changes.
