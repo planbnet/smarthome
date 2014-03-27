@@ -15,9 +15,11 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "request" : "",
+    "forever-agent" : "",
     "cheerio" : "",
     "moment" : "",
-    "underscore": ""
+    "underscore": "",
+    "loglevel": ""
   },
   "devDependencies": {
     "mocha": "",
