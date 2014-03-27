@@ -2,21 +2,16 @@ RWE Smarthome API
 =================
 
 Scrapes the RWE Smarthome Mobile Web Interface and implements the
-long polling mechanism that this site uses to be notified of changes.
-
-
-*This is not yet in a usable state!*
-
+long polling mechanism that the site uses to be notified of changes.
 
 The biggest problem is that it seems to timeout after a while and receives
 invalid response from the server (unfortunately with status 200).
-
-
 
 Use it like this:
 
 ```js
 var smarthome = require('smarthome');
+smarthome.setLogLevel("debug");
 
 smarthome.connect(USERNAME, PASSWORD, function( error, api ) {
   if (error) {
@@ -35,35 +30,30 @@ smarthome.connect(USERNAME, PASSWORD, function( error, api ) {
   var bath = api.location("dead1-beef2-cafe3-1234-5678");
   var x = api.device("dead1-beef2-cafe3-1234-5678");
 
-  //or by name (case insensitive substring match)
+  //or by name (case insensitive substring search, return first match)
   var livingroom = api.location("livingroom");
   //even on a location
   var windowinlivingroom = livingroom.sensor("window");
 
-  //event "initialized" will be emitted when all devices
-  //have fetched their initial value
-  api.on("initialized", function() {
-    for (var i = 0; i < api.locations.length; i++) {
-      var loc = api.locations[i];
-      console.log( loc.displayName + ": " + loc.temperature() );
-    }
-
-    //watch for changes like this:
-    windowinlivingroom.on("change", function(window, oldValue) {
-      console.log("Window in living room changed from " + oldValue + " to " + window.value);
-    });
-
-    //or for all changes:
-    api.on("change", function(device, oldValue) {
-      console.log(device.name + " changed from " + oldValue + " to " + device.value);
-    });
+  for (var i = 0; i < api.locations.length; i++) {
+    var loc = api.locations[i];
+    console.log( loc.displayName + ": " + loc.temperature() );
   }
+
+  //watch for changes like this:
+  windowinlivingroom.on("change", function(window, oldValue) {
+    console.log("Window in living room changed from " + oldValue + " to " + window.value);
+  });
+
+  //or for all changes. displayValue() gives human readable values 
+  api.on("change", function(device) {
+    console.log(device.name + " changed to " + device.displayValue());
+  });
 
   //You can set values like this:
   var actuator = api.actuator("dead1-beef2-cafe3-1234-5678");
   actuator.setValue(1, function(error, newvalue) { ... } );
-  //the callback is not required - watch the device for changes when you need to be informed 
-
+  //the callback is not required - simply watch the device for changes when you need to be informed 
 
   //finally, very very rough error handling:
   api.on("error", function(error) {
