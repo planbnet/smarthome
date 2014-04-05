@@ -62,7 +62,7 @@ smarthome.connect(USERNAME, PASSWORD, function( error, api ) {
   
   //To automatically reconnect, hook on "disconnect" event
   api.on("disconnect", function() {
-    //create new connection, reinitialize losteners, etc
+    //create new connection, reinitialize listeners, etc
   });
 
 });
