@@ -1,6 +1,6 @@
 {
   "name": "smarthome",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "RWE Smarthome API",
   "main": "lib/main.js",
   "directories": {
@@ -14,12 +14,13 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "request" : "",
-    "forever-agent" : "",
-    "cheerio" : "",
-    "moment" : "",
-    "underscore": "",
-    "loglevel": ""
+    "async": "^2.0.0-rc.2",
+    "cheerio": "",
+    "forever-agent": "",
+    "loglevel": "",
+    "moment": "",
+    "request": "",
+    "underscore": ""
   },
   "devDependencies": {
     "mocha": "",
